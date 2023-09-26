@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layout.admin')
 @section('title','Sửa danh mục')
 @section('content')
 <form action="{{route('category.update',['category'=>$category->id])}}" method="post" enctype="multipart/form-data">

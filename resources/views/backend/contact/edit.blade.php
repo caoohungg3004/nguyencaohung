@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layout.admin')
 @section('title','Thêm thương hiệu')
 @section('content')
 <form action="{{route('contact.update',['contact'=>$contact->id])}}" method="post" enctype="multipart/form-data">

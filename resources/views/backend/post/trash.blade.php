@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layout.admin')
 @section('title','trang quan tri')
 @section('content')
 <div class="content-wrapper">

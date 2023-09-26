@@ -1,5 +1,5 @@
 
-@extends('layouts.admin')
+@extends('layout.admin')
 @section('title','Cập nhật thương hiệu')
 @section('content')
 <form action="{{ route("menu.update",['menu'=>$menu->id])}}" method="post" enctype="multipart/form-data">

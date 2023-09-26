@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layout.admin')
 @section('title','Thêm danh mục')
 @section('content')
 <form action="{{route('category.store')}}" method="POST" enctype="multipart/form-data">
