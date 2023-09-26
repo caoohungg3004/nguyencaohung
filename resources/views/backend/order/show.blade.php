@@ -7,12 +7,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>CHI TIẾT THƯƠNG HIỆU</h1>
+                    <h1>CHI TIẾT SẢN PHẨM</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="">Home</a></li>
-                        <li class="breadcrumb-item active">Chi tiết thương hiệu</li>
+                        <li class="breadcrumb-item active">Chi tiết sản phẩm</li>
                     </ol>
                 </div>
             </div>
@@ -31,8 +31,8 @@
                     </div>
                     <div class="col-md-6 text-right">
                         <div class="text-right">
-                            <a class=" btn btn-sm btn-primary"  href="{{ route('brand.index') }}"><i class="fas fa-arrow-circle-left"></i> Quay lại</a>
-                            <a class=" btn btn-sm btn-danger" href="{{ route('brand.destroy',['brand'=>$brand->id]) }}"> <i class="fa fa-trash"></i>Xóa</a>
+                            <a class=" btn btn-sm btn-primary"  href="{{ route('order.index') }}"><i class="fas fa-arrow-circle-left"></i> Quay lại</a>
+                            <a class=" btn btn-sm btn-danger" href="{{ route('order.destroy',['order'=>$order->id]) }}"> <i class="fa fa-trash"></i>Xóa</a>
                         </div>
                     </div>
                 </div>
@@ -52,54 +52,57 @@
                     <tbody>
                         <tr>
                             <th>Id</th>
-                            <td>{{ $brand->id }}</td>
+                            <td>{{ $order->id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Mã người dùng</th>
+                            <td>{{ $order->user_id }}</td>
                         </tr>
 
                         <tr>
-                            <th>Tên thương hiệu</th>
-                            <td>{{ $brand->name }}</td>
+                            <th>Tên liên hệ</th>
+                            <td>{{ $order->name }}</td>
                         </tr>
                         <tr>
-                            <th>Slug</th>
-                            <td>{{ $brand->slug }}</td>
+                            <th>Email</th>
+                            <td>{{ $order->email }}</td>
+                        </tr>
+                        <tr>
+                            <th>SĐT liên hệ</th>
+                            <td>{{ $order->phone }}</td>
+                        </tr>
+                        <tr>
+                            <th>Địa chỉ</th>
+                            <td>{{ $order->address }}</td>
                         </tr>
                         <tr>
                             <th>Sắp xếp</th>
-                            <td>{{ $brand->sort_order }}</td>
+                            <td>{{ $order->sort_order }}</td>
                         </tr>
                         <tr>
-                            <th>Hình đại diện</th>
-                            <td class="index-img">
-                                <img src="{{ asset('img/brand/'.$brand->image) }}" class="card-img-top index-img" alt="{{ $brand->image }}">
-                            </td>
+                            <th>Ghi chú</th>
+                            <td>{{ $order->note }}</td>
                         </tr>
-                        <tr>
-                            <th>Từ khóa tìm kiếm</th>
-                            <td>{{ $brand->metakey }}</td>
-                        </tr>
-                        <tr>
-                            <th>Mô tả</th>
-                            <td>{{ $brand->metadesc }}</td>
-                        </tr>
+                        
                         <tr>
                             <th>Ngày tạo</th>
-                            <td>{{ $brand->created_at }}</td>
+                            <td>{{ $order->created_at }}</td>
                         </tr>
                         <tr>
                             <th>Người tạo</th>
-                            <td>{{ $brand->created_by }}</td>
+                            <td>{{ $order->created_by }}</td>
                         </tr>
                         <tr>
                             <th>Ngày sửa cuối</th>
-                            <td>{{ $brand->updated_at }}</td>
+                            <td>{{ $order->updated_at }}</td>
                         </tr>
                         <tr>
                             <th>Người sửa cuối</th>
-                            <td>{{ $brand->updated_by }}</td>
+                            <td>{{ $order->updated_by }}</td>
                         </tr>
                         <tr>
                             <th>Trạng thái</th>
-                            <td>{{ $brand->status }}</td>
+                            <td>{{ $order->status }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -112,13 +115,13 @@
                     </div>
                     <div class="col-md-6 text-right">
                         <div class="text-right">
-                            <a class="btn btn-sm btn-info" href="{{ route('brand.index') }}">
+                            <a class="btn btn-sm btn-info" href="{{ route('order.index') }}">
                                 <i class="fas fa-arrow-circle-left"></i> Quay về danh sách
                             </a>
-                            <a class="btn btn-sm btn-primary" href="{{ route('brand.edit',['brand'=>$brand->id]) }}">
+                            <a class="btn btn-sm btn-primary" href="{{ route('order.edit',['order'=>$order->id]) }}">
                                 <i class=" fas fa-edit"></i>
                             </a>
-                            <a class="btn btn-sm btn-danger" href="{{ route('brand.trash',['brand'=>$brand->id]) }}">
+                            <a class="btn btn-sm btn-danger" href="{{ route('order.trash',['order'=>$order->id]) }}">
                                 <i class=" fas fa-trash"></i>
                             </a>
                         </div>

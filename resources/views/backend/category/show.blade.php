@@ -31,8 +31,8 @@
                     </div>
                     <div class="col-md-6 text-right">
                         <div class="text-right">
-                            <a class=" btn btn-sm btn-primary"  href="{{ route('brand.index') }}"><i class="fas fa-arrow-circle-left"></i> Quay lại</a>
-                            <a class=" btn btn-sm btn-danger" href="{{ route('brand.destroy',['brand'=>$brand->id]) }}"> <i class="fa fa-trash"></i>Xóa</a>
+                            <a class=" btn btn-sm btn-primary"  href="{{ route('category.index') }}"><i class="fas fa-arrow-circle-left"></i> Quay lại</a>
+                            <a class=" btn btn-sm btn-danger" href="{{ route('category.destroy',['category'=>$category->id]) }}"> <i class="fa fa-trash"></i>Xóa</a>
                         </div>
                     </div>
                 </div>
@@ -52,54 +52,57 @@
                     <tbody>
                         <tr>
                             <th>Id</th>
-                            <td>{{ $brand->id }}</td>
+                            <td>{{ $category->id }}</td>
                         </tr>
-
+                        <tr>
+                            <th>Mã cấp cha</th>
+                            <td>{{ $category->parent_id }}</td>
+                        </tr>
                         <tr>
                             <th>Tên thương hiệu</th>
-                            <td>{{ $brand->name }}</td>
+                            <td>{{ $category->name }}</td>
                         </tr>
                         <tr>
                             <th>Slug</th>
-                            <td>{{ $brand->slug }}</td>
+                            <td>{{ $category->slug }}</td>
                         </tr>
                         <tr>
                             <th>Sắp xếp</th>
-                            <td>{{ $brand->sort_order }}</td>
+                            <td>{{ $category->sort_order }}</td>
                         </tr>
                         <tr>
                             <th>Hình đại diện</th>
                             <td class="index-img">
-                                <img src="{{ asset('img/brand/'.$brand->image) }}" class="card-img-top index-img" alt="{{ $brand->image }}">
+                                <img src="{{ asset('img/category/'.$category->image) }}" class="card-img-top index-img" alt="">
                             </td>
                         </tr>
                         <tr>
                             <th>Từ khóa tìm kiếm</th>
-                            <td>{{ $brand->metakey }}</td>
+                            <td>{{ $category->metakey }}</td>
                         </tr>
                         <tr>
                             <th>Mô tả</th>
-                            <td>{{ $brand->metadesc }}</td>
+                            <td>{{ $category->metadesc }}</td>
                         </tr>
                         <tr>
                             <th>Ngày tạo</th>
-                            <td>{{ $brand->created_at }}</td>
+                            <td>{{ $category->created_at }}</td>
                         </tr>
                         <tr>
                             <th>Người tạo</th>
-                            <td>{{ $brand->created_by }}</td>
+                            <td>{{ $category->created_by }}</td>
                         </tr>
                         <tr>
                             <th>Ngày sửa cuối</th>
-                            <td>{{ $brand->updated_at }}</td>
+                            <td>{{ $category->updated_at }}</td>
                         </tr>
                         <tr>
                             <th>Người sửa cuối</th>
-                            <td>{{ $brand->updated_by }}</td>
+                            <td>{{ $category->updated_by }}</td>
                         </tr>
                         <tr>
                             <th>Trạng thái</th>
-                            <td>{{ $brand->status }}</td>
+                            <td>{{ $category->status }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -112,13 +115,13 @@
                     </div>
                     <div class="col-md-6 text-right">
                         <div class="text-right">
-                            <a class="btn btn-sm btn-info" href="{{ route('brand.index') }}">
+                            <a class="btn btn-sm btn-info" href="{{ route('category.index') }}">
                                 <i class="fas fa-arrow-circle-left"></i> Quay về danh sách
                             </a>
-                            <a class="btn btn-sm btn-primary" href="{{ route('brand.edit',['brand'=>$brand->id]) }}">
+                            <a class="btn btn-sm btn-primary" href="{{ route('category.edit',['category'=>$category->id]) }}">
                                 <i class=" fas fa-edit"></i>
                             </a>
-                            <a class="btn btn-sm btn-danger" href="{{ route('brand.trash',['brand'=>$brand->id]) }}">
+                            <a class="btn btn-sm btn-danger" href="{{ route('category.trash',['category'=>$category->id]) }}">
                                 <i class=" fas fa-trash"></i>
                             </a>
                         </div>

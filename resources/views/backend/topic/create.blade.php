@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('title','Thêm thương hiệu')
 @section('content')
-<form action="{{route('brand.store')}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('topic.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -9,7 +9,7 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1>Add brand</h1>
+                <h1>Add topic</h1>
               </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -37,7 +37,7 @@
                     <div class="col-md-6 text-right">
                       <button type="submit" class="btn bg-success">
                         <i class="fa-solid fa-save"></i> Lưu [Thêm] </button>
-                      <a href="{{ route('brand.index') }}" class="btn bg-success">
+                      <a href="{{ route('topic.index') }}" class="btn bg-success">
                         <i class="fa-solid fa-arrow-left"></i> Quay về danh sách </a>
 
                     </div>
@@ -59,7 +59,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="metakey">Từ khóa tìm kiếm</label>
-                            <textarea type="text" name="metakey" id="metakey" class="form-control" placeholder="Từ khóa tìm kiếm">{{old('metakey')}}</textarea>
+                            <textarea  name="metakey" id="metakey" class="form-control" placeholder="Từ khóa tìm kiếm">{{old('metakey')}}</textarea>
                             @if ($errors->any())
                                 <div class="text-danger">
                                     {{$errors->first('metakey')}}
@@ -70,7 +70,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="metadesc">Mô tả</label>
-                            <textarea type="text" name="metadesc" id="metadesc" class="form-control" placeholder="Mô tả">{{old('metadesc')}}</textarea>
+                            <textarea  name="metadesc" id="metadesc" class="form-control" placeholder="Mô tả">{{old('metadesc')}}</textarea>
                             @if ($errors->any())
                                 <div class="text-danger">
                                     {{$errors->first('metadesc')}}
@@ -83,17 +83,17 @@
                     <div class="col-md-3">
 
                         <div class="mb-3">
-                            <label for="sort_order">Vị trí sắp xếp</label>
-                            <select name="sort_order" id="sort_order" class="form-control">
-                                <option value="0">--Vị trí sắp xếp--</option>
-                                {!! $http_sort_order !!}
+                            <label for="parent_id">Mã cấp cha</label>
+                            <select name="parent_id" id="parent_id" class="form-control">
+                                <option value="0">--Chọn mã--</option>
+                                {!! $http_parent_id !!}
                             </select>
                         </div>
-                        <div class="mb-3">
+                        {{-- <div class="mb-3">
                             <label for="image">Hình ảnh</label>
                             <input type="file" name="image" value="{{old('image')}}" id="image" class="form-control" placeholder="Thêm hình ảnh">
 
-                        </div>
+                        </div> --}}
                         <div class="mb-3">
                             <label for="status">Trạng thái</label>
                             <select name="status" id="status" class="form-control">

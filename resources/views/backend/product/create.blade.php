@@ -1,7 +1,7 @@
-@extends('layouts.admin')
+@extends('layout.admin')
 @section('title','Thêm thương hiệu')
 @section('content')
-<form action="{{route('brand.store')}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('product.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -9,7 +9,7 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1>Add brand</h1>
+                <h1>Add product</h1>
               </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -37,7 +37,7 @@
                     <div class="col-md-6 text-right">
                       <button type="submit" class="btn bg-success">
                         <i class="fa-solid fa-save"></i> Lưu [Thêm] </button>
-                      <a href="{{ route('brand.index') }}" class="btn bg-success">
+                      <a href="{{ route('product.index') }}" class="btn bg-success">
                         <i class="fa-solid fa-arrow-left"></i> Quay về danh sách </a>
 
                     </div>
@@ -59,7 +59,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="metakey">Từ khóa tìm kiếm</label>
-                            <textarea type="text" name="metakey" id="metakey" class="form-control" placeholder="Từ khóa tìm kiếm">{{old('metakey')}}</textarea>
+                            <textarea  name="metakey" id="metakey" class="form-control" placeholder="Từ khóa tìm kiếm">{{old('metakey')}}</textarea>
                             @if ($errors->any())
                                 <div class="text-danger">
                                     {{$errors->first('metakey')}}
@@ -70,7 +70,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="metadesc">Mô tả</label>
-                            <textarea type="text" name="metadesc" id="metadesc" class="form-control" placeholder="Mô tả">{{old('metadesc')}}</textarea>
+                            <textarea  name="metadesc" id="metadesc" class="form-control" placeholder="Mô tả">{{old('metadesc')}}</textarea>
                             @if ($errors->any())
                                 <div class="text-danger">
                                     {{$errors->first('metadesc')}}
@@ -79,20 +79,87 @@
                             @endif
 
                         </div>
+                        <div class="mb-3">
+                            <label for="detail">Chi tiết</label>
+                            <textarea  name="detail" id="detail" class="form-control" placeholder="Chi tiết">{{old('detail')}}</textarea>
+                            @if ($errors->any())
+                                <div class="text-danger">
+                                    {{$errors->first('detail')}}
+                                </div>
+
+                            @endif
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="price">Giá</label>
+                            <textarea  name="price" id="price" class="form-control" placeholder="5$">{{old('price')}}</textarea>
+                            @if ($errors->any())
+                                <div class="text-danger">
+                                    {{$errors->first('price')}}
+                                </div>
+
+                            @endif
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="price_sale">Giá sale</label>
+                            <textarea  name="price_sale" id="price_sale" class="form-control" placeholder="5$">{{old('price_sale')}}</textarea>
+
+
+                        </div>
                     </div>
                     <div class="col-md-3">
+                        <div class="mb-3">
+                            <label for="category_id">Danh mục</label>
+                            <select name="category_id" id="category_id" required class="form-control">
+                                <option value="">--chon danh mục--</option>
+                                {{!!$html_category_id!!}}
+                            </select>
+                            @if ($errors->has('category_id'))
+                                <div class="text-danger">
+                                    {{$errors->first('category_id')}}
+                                </div>
+                            @endif
+                        </div>
+                        <div class="mb-3">
+                            <label for="brand_id">Thương hiệu</label>
+                            <select name="brand_id" id="brand_id" required class="form-control">
+                                <option value="">--chon thương hiệu--</option>
+                                {{!!$html_brand_id!!}}
+                            </select>
+                            @if ($errors->any())
+                                <div class="text-danger">
+                                    {{$errors->first('brand_id')}}
+                                </div>
 
+                            @endif
+                        </div>
                         <div class="mb-3">
                             <label for="sort_order">Vị trí sắp xếp</label>
                             <select name="sort_order" id="sort_order" class="form-control">
                                 <option value="0">--Vị trí sắp xếp--</option>
-                                {!! $http_sort_order !!}
+                                {!! $html_sort_order !!}
                             </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="qty">Số lượng</label>
+                            <input type="number" name="qty" value="{{old('qty')}}" id="qty" class="form-control" placeholder="Nhập số lượng">
+                            @if ($errors->any())
+                            <div class="text-danger">
+                                {{$errors->first('qty')}}
+                            </div>
+
+                        @endif
                         </div>
                         <div class="mb-3">
                             <label for="image">Hình ảnh</label>
                             <input type="file" name="image" value="{{old('image')}}" id="image" class="form-control" placeholder="Thêm hình ảnh">
+                            @if ($errors->any())
+                            <div class="text-danger">
+                                {{$errors->first('image')}}
+                            </div>
 
+                        @endif
                         </div>
                         <div class="mb-3">
                             <label for="status">Trạng thái</label>

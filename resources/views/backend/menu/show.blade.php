@@ -31,8 +31,8 @@
                     </div>
                     <div class="col-md-6 text-right">
                         <div class="text-right">
-                            <a class=" btn btn-sm btn-primary"  href="{{ route('brand.index') }}"><i class="fas fa-arrow-circle-left"></i> Quay lại</a>
-                            <a class=" btn btn-sm btn-danger" href="{{ route('brand.destroy',['brand'=>$brand->id]) }}"> <i class="fa fa-trash"></i>Xóa</a>
+                            <a class=" btn btn-sm btn-primary"  href="{{ route('menu.index') }}"><i class="fas fa-arrow-circle-left"></i> Quay lại</a>
+                            <a class=" btn btn-sm btn-danger" href="{{ route('menu.destroy',['menu'=>$menu->id]) }}"> <i class="fa fa-trash"></i>Xóa</a>
                         </div>
                     </div>
                 </div>
@@ -52,54 +52,52 @@
                     <tbody>
                         <tr>
                             <th>Id</th>
-                            <td>{{ $brand->id }}</td>
+                            <td>{{ $menu->id }}</td>
                         </tr>
 
                         <tr>
                             <th>Tên thương hiệu</th>
-                            <td>{{ $brand->name }}</td>
+                            <td>{{ $menu->name }}</td>
                         </tr>
                         <tr>
-                            <th>Slug</th>
-                            <td>{{ $brand->slug }}</td>
+                            <th>Link</th>
+                            <td>{{ $menu->link }}</td>
                         </tr>
                         <tr>
-                            <th>Sắp xếp</th>
-                            <td>{{ $brand->sort_order }}</td>
+                            <th>Position</th>
+                            <td>{{ $menu->position }}</td>
                         </tr>
                         <tr>
-                            <th>Hình đại diện</th>
-                            <td class="index-img">
-                                <img src="{{ asset('img/brand/'.$brand->image) }}" class="card-img-top index-img" alt="{{ $brand->image }}">
-                            </td>
+                            <th>Mã cấp cha</th>
+                            <td>{{ $menu->parent_id }}</td>
                         </tr>
                         <tr>
-                            <th>Từ khóa tìm kiếm</th>
-                            <td>{{ $brand->metakey }}</td>
+                            <th>Mã bảng</th>
+                            <td>{{ $menu->table_id }}</td>
                         </tr>
                         <tr>
-                            <th>Mô tả</th>
-                            <td>{{ $brand->metadesc }}</td>
+                            <th>Kiểu</th>
+                            <td>{{ $menu->type }}</td>
                         </tr>
                         <tr>
                             <th>Ngày tạo</th>
-                            <td>{{ $brand->created_at }}</td>
+                            <td>{{ $menu->created_at }}</td>
                         </tr>
                         <tr>
                             <th>Người tạo</th>
-                            <td>{{ $brand->created_by }}</td>
+                            <td>{{ $menu->created_by }}</td>
                         </tr>
                         <tr>
                             <th>Ngày sửa cuối</th>
-                            <td>{{ $brand->updated_at }}</td>
+                            <td>{{ $menu->updated_at }}</td>
                         </tr>
                         <tr>
                             <th>Người sửa cuối</th>
-                            <td>{{ $brand->updated_by }}</td>
+                            <td>{{ $menu->updated_by }}</td>
                         </tr>
                         <tr>
                             <th>Trạng thái</th>
-                            <td>{{ $brand->status }}</td>
+                            <td>{{ $menu->status }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -112,13 +110,13 @@
                     </div>
                     <div class="col-md-6 text-right">
                         <div class="text-right">
-                            <a class="btn btn-sm btn-info" href="{{ route('brand.index') }}">
+                            <a class="btn btn-sm btn-info" href="{{ route('menu.index') }}">
                                 <i class="fas fa-arrow-circle-left"></i> Quay về danh sách
                             </a>
-                            <a class="btn btn-sm btn-primary" href="{{ route('brand.edit',['brand'=>$brand->id]) }}">
+                            <a class="btn btn-sm btn-primary" href="{{ route('menu.edit',['menu'=>$menu->id]) }}">
                                 <i class=" fas fa-edit"></i>
                             </a>
-                            <a class="btn btn-sm btn-danger" href="{{ route('brand.trash',['brand'=>$brand->id]) }}">
+                            <a class="btn btn-sm btn-danger" href="{{ route('menu.trash',['menu'=>$menu->id]) }}">
                                 <i class=" fas fa-trash"></i>
                             </a>
                         </div>

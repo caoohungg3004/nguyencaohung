@@ -7,12 +7,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>CHI TIẾT THƯƠNG HIỆU</h1>
+                    <h1>CHI TIẾT SẢN PHẨM</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="">Home</a></li>
-                        <li class="breadcrumb-item active">Chi tiết thương hiệu</li>
+                        <li class="breadcrumb-item active">Chi tiết sản phẩm</li>
                     </ol>
                 </div>
             </div>
@@ -31,8 +31,8 @@
                     </div>
                     <div class="col-md-6 text-right">
                         <div class="text-right">
-                            <a class=" btn btn-sm btn-primary"  href="{{ route('brand.index') }}"><i class="fas fa-arrow-circle-left"></i> Quay lại</a>
-                            <a class=" btn btn-sm btn-danger" href="{{ route('brand.destroy',['brand'=>$brand->id]) }}"> <i class="fa fa-trash"></i>Xóa</a>
+                            <a class=" btn btn-sm btn-primary"  href="{{ route('contact.index') }}"><i class="fas fa-arrow-circle-left"></i> Quay lại</a>
+                            <a class=" btn btn-sm btn-danger" href="{{ route('contact.destroy',['contact'=>$contact->id]) }}"> <i class="fa fa-trash"></i>Xóa</a>
                         </div>
                     </div>
                 </div>
@@ -52,54 +52,67 @@
                     <tbody>
                         <tr>
                             <th>Id</th>
-                            <td>{{ $brand->id }}</td>
-                        </tr>
-
-                        <tr>
-                            <th>Tên thương hiệu</th>
-                            <td>{{ $brand->name }}</td>
+                            <td>{{ $contact->id }}</td>
                         </tr>
                         <tr>
-                            <th>Slug</th>
-                            <td>{{ $brand->slug }}</td>
+                            <th>Mã người dùng</th>
+                            <td>{{ $contact->user_id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Mã trả lời</th>
+                            <td>{{ $contact->replay_id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Tên liên hệ</th>
+                            <td>{{ $contact->name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>{{ $contact->email }}</td>
+                        </tr>
+                        <tr>
+                            <th>SĐT liên hệ</th>
+                            <td>{{ $contact->phone }}</td>
+                        </tr>
+                        <tr>
+                            <th>Title</th>
+                            <td>{{ $contact->title }}</td>
                         </tr>
                         <tr>
                             <th>Sắp xếp</th>
-                            <td>{{ $brand->sort_order }}</td>
+                            <td>{{ $contact->sort_order }}</td>
                         </tr>
                         <tr>
-                            <th>Hình đại diện</th>
-                            <td class="index-img">
-                                <img src="{{ asset('img/brand/'.$brand->image) }}" class="card-img-top index-img" alt="{{ $brand->image }}">
-                            </td>
+                            <th>Nội dung phản hồi</th>
+                            <td>{{ $contact->content }}</td>
                         </tr>
                         <tr>
                             <th>Từ khóa tìm kiếm</th>
-                            <td>{{ $brand->metakey }}</td>
+                            <td>{{ $contact->metakey }}</td>
                         </tr>
                         <tr>
                             <th>Mô tả</th>
-                            <td>{{ $brand->metadesc }}</td>
+                            <td>{{ $contact->metadesc }}</td>
                         </tr>
                         <tr>
                             <th>Ngày tạo</th>
-                            <td>{{ $brand->created_at }}</td>
+                            <td>{{ $contact->created_at }}</td>
                         </tr>
                         <tr>
                             <th>Người tạo</th>
-                            <td>{{ $brand->created_by }}</td>
+                            <td>{{ $contact->created_by }}</td>
                         </tr>
                         <tr>
                             <th>Ngày sửa cuối</th>
-                            <td>{{ $brand->updated_at }}</td>
+                            <td>{{ $contact->updated_at }}</td>
                         </tr>
                         <tr>
                             <th>Người sửa cuối</th>
-                            <td>{{ $brand->updated_by }}</td>
+                            <td>{{ $contact->updated_by }}</td>
                         </tr>
                         <tr>
                             <th>Trạng thái</th>
-                            <td>{{ $brand->status }}</td>
+                            <td>{{ $contact->status }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -112,13 +125,13 @@
                     </div>
                     <div class="col-md-6 text-right">
                         <div class="text-right">
-                            <a class="btn btn-sm btn-info" href="{{ route('brand.index') }}">
+                            <a class="btn btn-sm btn-info" href="{{ route('contact.index') }}">
                                 <i class="fas fa-arrow-circle-left"></i> Quay về danh sách
                             </a>
-                            <a class="btn btn-sm btn-primary" href="{{ route('brand.edit',['brand'=>$brand->id]) }}">
+                            <a class="btn btn-sm btn-primary" href="{{ route('contact.edit',['contact'=>$contact->id]) }}">
                                 <i class=" fas fa-edit"></i>
                             </a>
-                            <a class="btn btn-sm btn-danger" href="{{ route('brand.trash',['brand'=>$brand->id]) }}">
+                            <a class="btn btn-sm btn-danger" href="{{ route('contact.trash',['contact'=>$contact->id]) }}">
                                 <i class=" fas fa-trash"></i>
                             </a>
                         </div>

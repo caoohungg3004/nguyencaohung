@@ -1,7 +1,7 @@
-@extends('layouts.admin')
+@extends('layout.admin')
 @section('title','Thêm thương hiệu')
 @section('content')
-<form action="{{route('brand.store')}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('slider.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -9,7 +9,7 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1>Add brand</h1>
+                <h1>Add slider</h1>
               </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -37,7 +37,7 @@
                     <div class="col-md-6 text-right">
                       <button type="submit" class="btn bg-success">
                         <i class="fa-solid fa-save"></i> Lưu [Thêm] </button>
-                      <a href="{{ route('brand.index') }}" class="btn bg-success">
+                      <a href="{{ route('slider.index') }}" class="btn bg-success">
                         <i class="fa-solid fa-arrow-left"></i> Quay về danh sách </a>
 
                     </div>
@@ -58,22 +58,22 @@
                             @endif
                         </div>
                         <div class="mb-3">
-                            <label for="metakey">Từ khóa tìm kiếm</label>
-                            <textarea type="text" name="metakey" id="metakey" class="form-control" placeholder="Từ khóa tìm kiếm">{{old('metakey')}}</textarea>
+                            <label for="link">Từ khóa tìm kiếm</label>
+                            <textarea type="text" name="link" id="link" class="form-control" placeholder="Link hình ảnh">{{old('link')}}</textarea>
                             @if ($errors->any())
                                 <div class="text-danger">
-                                    {{$errors->first('metakey')}}
+                                    {{$errors->first('link')}}
                                 </div>
 
                             @endif
 
                         </div>
                         <div class="mb-3">
-                            <label for="metadesc">Mô tả</label>
-                            <textarea type="text" name="metadesc" id="metadesc" class="form-control" placeholder="Mô tả">{{old('metadesc')}}</textarea>
+                            <label for="position">Mô tả</label>
+                            <textarea type="text" name="position" id="position" class="form-control" placeholder="Position">{{old('position')}}</textarea>
                             @if ($errors->any())
                                 <div class="text-danger">
-                                    {{$errors->first('metadesc')}}
+                                    {{$errors->first('position')}}
                                 </div>
 
                             @endif
@@ -92,7 +92,12 @@
                         <div class="mb-3">
                             <label for="image">Hình ảnh</label>
                             <input type="file" name="image" value="{{old('image')}}" id="image" class="form-control" placeholder="Thêm hình ảnh">
+                            @if ($errors->any())
+                                <div class="text-danger">
+                                    {{$errors->first('image')}}
+                                </div>
 
+                            @endif
                         </div>
                         <div class="mb-3">
                             <label for="status">Trạng thái</label>

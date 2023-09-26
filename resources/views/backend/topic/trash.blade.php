@@ -7,12 +7,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Trash brand</h1>
+          <h1>Trash topic</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Thùng rác brand</li>
+            <li class="breadcrumb-item active">Thùng rác topic</li>
           </ol>
 
         </div>
@@ -29,7 +29,7 @@
 
         <div class="card-tools">
 
-          <a class=" btn  bg-primary" href="{{ route('brand.index') }}"> <i class="fa-solid fa-arrow-left"></i>Quay về</a>
+          <a class=" btn  bg-primary" href="{{ route('topic.index') }}"> <i class="fa-solid fa-arrow-left"></i>Quay về</a>
         </div>
       </div>
       <div class="card-body">
@@ -54,22 +54,22 @@
               </tr>
           </thead>
           <tbody>
-              @foreach ($list_brand as $brand)
+              @foreach ($list_topic as $topic)
               <tr>
               <td>
                   <input type="checkbox" name="" id="">
               </td>
-              <td> <img width="50px" height="50px" src="{{asset('img/brand/'.$brand->image) }}" alt=""> </td>
-              <td>{{$brand->name}}</td>
-              <td>{{$brand->slug}}</td>
+              <td> <img width="50px" height="50px" src="{{asset('img/topic/'.$topic->image) }}" alt=""> </td>
+              <td>{{$topic->name}}</td>
+              <td>{{$topic->slug}}</td>
               <td>
 
-                <a href="{{route('brand.show',['brand'=>1])}}" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
-                <a href="{{ route('brand.destroy', ['brand' => $brand->id]) }}"
+                <a href="{{route('topic.show',['topic'=>1])}}" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+                <a href="{{ route('topic.destroy', ['topic' => $topic->id]) }}"
                     class="btn btn-sm btn-danger" title="delete">
                     <i class="fa-solid fa-trash"></i>
                 </a>
-                <a href="{{ route('brand.restore', ['brand' => $brand->id]) }}"
+                <a href="{{ route('topic.restore', ['topic' => $topic->id]) }}"
                     class="btn btn-sm btn-primary" title="restore">
                     <i class="fa-solid fa-rotate"></i>
                 </a>
@@ -77,7 +77,7 @@
 
 
               </td>
-              <td>{{$brand->id}}</td>
+              <td>{{$topic->id}}</td>
             </tr>
               @endforeach
 

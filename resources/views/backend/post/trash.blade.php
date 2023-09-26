@@ -7,12 +7,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Trash brand</h1>
+          <h1>Trash post</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Thùng rác brand</li>
+            <li class="breadcrumb-item active">Thùng rác post</li>
           </ol>
 
         </div>
@@ -29,7 +29,7 @@
 
         <div class="card-tools">
 
-          <a class=" btn  bg-primary" href="{{ route('brand.index') }}"> <i class="fa-solid fa-arrow-left"></i>Quay về</a>
+          <a class=" btn  bg-primary" href="{{ route('post.index') }}"> <i class="fa-solid fa-arrow-left"></i>Quay về</a>
         </div>
       </div>
       <div class="card-body">
@@ -46,7 +46,7 @@
               <tr>
                   <th>#</th>
                   <th>Hình ảnh</th>
-                  <th>Tên sản phẩm</th>
+                  <th>Title</th>
                   <th>slug sản phẩm</th>
                   <th>Chức năng</th>
                   <th>ID</th>
@@ -54,22 +54,22 @@
               </tr>
           </thead>
           <tbody>
-              @foreach ($list_brand as $brand)
+              @foreach ($list_post as $post)
               <tr>
               <td>
                   <input type="checkbox" name="" id="">
               </td>
-              <td> <img width="50px" height="50px" src="{{asset('img/brand/'.$brand->image) }}" alt=""> </td>
-              <td>{{$brand->name}}</td>
-              <td>{{$brand->slug}}</td>
+              <td> <img width="50px" height="50px" src="{{asset('img/post/'.$post->image) }}" alt=""> </td>
+              <td>{{$post->title}}</td>
+              <td>{{$post->slug}}</td>
               <td>
 
-                <a href="{{route('brand.show',['brand'=>1])}}" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
-                <a href="{{ route('brand.destroy', ['brand' => $brand->id]) }}"
+                <a href="{{route('post.show',['post'=>1])}}" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+                <a href="{{ route('post.destroy', ['post' => $post->id]) }}"
                     class="btn btn-sm btn-danger" title="delete">
                     <i class="fa-solid fa-trash"></i>
                 </a>
-                <a href="{{ route('brand.restore', ['brand' => $brand->id]) }}"
+                <a href="{{ route('post.restore', ['post' => $post->id]) }}"
                     class="btn btn-sm btn-primary" title="restore">
                     <i class="fa-solid fa-rotate"></i>
                 </a>
@@ -77,7 +77,7 @@
 
 
               </td>
-              <td>{{$brand->id}}</td>
+              <td>{{$post->id}}</td>
             </tr>
               @endforeach
 

@@ -7,12 +7,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Trash brand</h1>
+          <h1>user</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Thùng rác brand</li>
+            <li class="breadcrumb-item active">Blank Page</li>
           </ol>
 
         </div>
@@ -28,19 +28,11 @@
         <h3 class="card-title">Title</h3>
 
         <div class="card-tools">
+          <a href="{{ route('user.create') }}" class="btn bg-success"><i class="fa-solid fa-plus"></i> Thêm </a>
 
-          <a class=" btn  bg-primary" href="{{ route('brand.index') }}"> <i class="fa-solid fa-arrow-left"></i>Quay về</a>
         </div>
       </div>
       <div class="card-body">
-        @if (session('message'))
-          @php
-          $message=session('message');
-        @endphp
-<div class="alert alert-{{ $message['type'] }}">
-{{ $message['mgs'] }}
-</div>
-@endif
         <table class="table table-bordered">
           <thead>
               <tr>
@@ -54,31 +46,24 @@
               </tr>
           </thead>
           <tbody>
-              @foreach ($list_brand as $brand)
-              <tr>
+              @foreach ($list_user as $user)
               <td>
                   <input type="checkbox" name="" id="">
               </td>
-              <td> <img width="50px" height="50px" src="{{asset('img/brand/'.$brand->image) }}" alt=""> </td>
-              <td>{{$brand->name}}</td>
-              <td>{{$brand->slug}}</td>
+              <td>{{$user->image}}</td>
+              <td>{{$user->name}}</td>
+              <td>{{$user->slug}}</td>
               <td>
-
-                <a href="{{route('brand.show',['brand'=>1])}}" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
-                <a href="{{ route('brand.destroy', ['brand' => $brand->id]) }}"
-                    class="btn btn-sm btn-danger" title="delete">
-                    <i class="fa-solid fa-trash"></i>
-                </a>
-                <a href="{{ route('brand.restore', ['brand' => $brand->id]) }}"
-                    class="btn btn-sm btn-primary" title="restore">
-                    <i class="fa-solid fa-rotate"></i>
-                </a>
-
-
+                  <a href="{{route('user.create')}}" class="btn btn-sm btn success">Thêm</a>
+                  <a href="{{route('user.show',['user'=>1])}}" class="btn btn-sm btn success">xem</a>
+                  <a href="{{route('user.edit',['user'=>1])}}" class="btn btn-sm btn primary">sửa</a>
+                  <form action="{{route('user.destroy',['user'=>1])}}" method="POST">
+                  @method('DELETE')
+                  <button type="submit" class="btn btn-sm btn danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                  </form>
 
               </td>
-              <td>{{$brand->id}}</td>
-            </tr>
+              <td>{{$user->id}}</td>
               @endforeach
 
           </tbody>
@@ -97,4 +82,3 @@
 </div>
 
 @endsection
-

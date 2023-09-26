@@ -2,7 +2,7 @@
 @extends('layouts.admin')
 @section('title','Cập nhật thương hiệu')
 @section('content')
-<form action="{{ route("brand.update",['brand'=>$brand->id])}}" method="post" enctype="multipart/form-data">
+<form action="{{ route("topic.update",['topic'=>$topic->id])}}" method="post" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 <div class="content-wrapper">
@@ -24,7 +24,7 @@
           <div class="">
             <button type="submit" class="btn bg-success">
                 <i class="fa-solid fa-save"></i> Lưu [Cập nhật] </button>
-              <a href="{{ route('brand.index') }}" class="btn bg-success">
+              <a href="{{ route('topic.index') }}" class="btn bg-success">
                 <i class="fa-solid fa-arrow-left"></i> Quay về danh sách </a>
           </div>
       </div><!-- /.container-fluid -->
@@ -55,7 +55,7 @@
                 <div class="col-9">
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Tên Thương HIệu</label>
-                        <input name="name" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nhập vào tên thương hiệu" value="{{ old('name',$brand->name) }}" >
+                        <input name="name" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nhập vào tên thương hiệu" value="{{ old('name',$topic->name) }}" >
                         @if ($errors->any())
                         <div class="text-danger">
                             {{$errors->first('name')}}
@@ -65,7 +65,7 @@
                       </div>
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">Từ Khóa</label>
-                        <textarea name="metakey" class="form-control" id="exampleFormControlTextarea1" placeholder="Nhập vào từ khóa" value="{{ old('metakey',$brand->metakey) }}"
+                        <textarea name="metakey" class="form-control" id="exampleFormControlTextarea1" placeholder="Nhập vào từ khóa" value="{{ old('metakey',$topic->metakey) }}"
                             rows="3"></textarea>
                             @if ($errors->any())
                             <div class="text-danger">
@@ -76,7 +76,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea2" class="form-label">Mô Tả</label>
-                        <textarea name="metadesc" class="form-control" id="exampleFormControlTextarea2" placeholder="Nhập vào mô tả" value="{{ old('metadesc',$brand->metadesc) }}"
+                        <textarea name="metadesc" class="form-control" id="exampleFormControlTextarea2" placeholder="Nhập vào mô tả" value="{{ old('metadesc',$topic->metadesc) }}"
                             rows="3" ></textarea>
                             @if ($errors->any())
                             <div class="text-danger">
@@ -89,16 +89,13 @@
                 <div class="col-3">
 
                     <div class="mb-3">
-                        <label for="exampleFormControlTextarea2" class="form-label">Sắp Xếp</label>
-                        <select name="sort_order" class="form-control" id="select1" aria-label="Default select example">
-                <option value="1">
-                    chọn thương hiệu
-                </option>
+                        <label for="parent_id">mã cấp cha</label>
+                        <select name="parent_id" id="parent_id" class="form-control">
+                            <option value="{{old('parent_id',$topic->parent_id)}}">--chọn mã--</option>
+                            {!! $http_parent_id !!}
                         </select>
                     </div>
-                    <div class="input-group mb-3">
-                        <input name="image" type="file" class="form-control-file" id="inputGroupFile02">
-                    </div>
+                    
                     <div class="mb-3">
                         <label for="status">Trạng thái</label>
                         <select name="status" id="status" class="form-control">

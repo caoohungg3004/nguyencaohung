@@ -1,8 +1,8 @@
 
-@extends('layouts.admin')
+@extends('layout.admin')
 @section('title','Cập nhật thương hiệu')
 @section('content')
-<form action="{{ route("brand.update",['brand'=>$brand->id])}}" method="post" enctype="multipart/form-data">
+<form action="{{ route("slider.update",['slider'=>$slider->id])}}" method="post" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 <div class="content-wrapper">
@@ -24,7 +24,7 @@
           <div class="">
             <button type="submit" class="btn bg-success">
                 <i class="fa-solid fa-save"></i> Lưu [Cập nhật] </button>
-              <a href="{{ route('brand.index') }}" class="btn bg-success">
+              <a href="{{ route('slider.index') }}" class="btn bg-success">
                 <i class="fa-solid fa-arrow-left"></i> Quay về danh sách </a>
           </div>
       </div><!-- /.container-fluid -->
@@ -54,8 +54,8 @@
             <div class="row">
                 <div class="col-9">
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Tên Thương HIệu</label>
-                        <input name="name" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nhập vào tên thương hiệu" value="{{ old('name',$brand->name) }}" >
+                        <label for="name" class="form-label">Tên Thương HIệu</label>
+                        <input name="name" type="text" class="form-control" id="name" placeholder="Nhập vào tên thương hiệu" value="{{ old('name',$slider->name) }}" >
                         @if ($errors->any())
                         <div class="text-danger">
                             {{$errors->first('name')}}
@@ -64,23 +64,23 @@
                     @endif
                       </div>
                     <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Từ Khóa</label>
-                        <textarea name="metakey" class="form-control" id="exampleFormControlTextarea1" placeholder="Nhập vào từ khóa" value="{{ old('metakey',$brand->metakey) }}"
+                        <label for="link" class="form-label">Từ Khóa</label>
+                        <textarea name="link" class="form-control" id="link" placeholder="Nhập link" value="{{ old('link',$slider->link) }}"
                             rows="3"></textarea>
                             @if ($errors->any())
                             <div class="text-danger">
-                                {{$errors->first('metakey')}}
+                                {{$errors->first('link')}}
                             </div>
 
                         @endif
                     </div>
                     <div class="mb-3">
-                        <label for="exampleFormControlTextarea2" class="form-label">Mô Tả</label>
-                        <textarea name="metadesc" class="form-control" id="exampleFormControlTextarea2" placeholder="Nhập vào mô tả" value="{{ old('metadesc',$brand->metadesc) }}"
+                        <label for="position" class="form-label">Mô Tả</label>
+                        <textarea name="position" class="form-control" id="position" placeholder="Nhập vào mô tả" value="{{ old('position',$slider->position) }}"
                             rows="3" ></textarea>
                             @if ($errors->any())
                             <div class="text-danger">
-                                {{$errors->first('metadesc')}}
+                                {{$errors->first('position')}}
                             </div>
 
                         @endif
@@ -89,15 +89,21 @@
                 <div class="col-3">
 
                     <div class="mb-3">
-                        <label for="exampleFormControlTextarea2" class="form-label">Sắp Xếp</label>
-                        <select name="sort_order" class="form-control" id="select1" aria-label="Default select example">
-                <option value="1">
-                    chọn thương hiệu
-                </option>
+                        <label for="sort_order">Vị trí sắp xếp</label>
+                        <select name="sort_order" id="sort_order" class="form-control">
+                            <option value="{{ old('sort_order',$slider->sort_order) }}">--Vị trí sắp xếp--</option>
+                            {!! $http_sort_order !!}
                         </select>
                     </div>
-                    <div class="input-group mb-3">
-                        <input name="image" type="file" class="form-control-file" id="inputGroupFile02">
+                    <div class="mb-3">
+                        <label for="image">Hình ảnh</label>
+                        <input type="file" name="image" value="{{old('image',$slider->image)}}" id="image" class="form-control" placeholder="Thêm hình ảnh">
+                        @if ($errors->any())
+                            <div class="text-danger">
+                                {{$errors->first('image')}}
+                            </div>
+
+                        @endif
                     </div>
                     <div class="mb-3">
                         <label for="status">Trạng thái</label>

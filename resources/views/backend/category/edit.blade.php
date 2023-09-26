@@ -1,7 +1,8 @@
 @extends('layouts.admin')
-@section('title','Thêm thương hiệu')
+@section('title','Sửa danh mục')
 @section('content')
-<form action="{{route('brand.store')}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('category.update',['category'=>$category->id])}}" method="post" enctype="multipart/form-data">
+    @method('PUT')
     @csrf
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -9,12 +10,12 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1>Add brand</h1>
+                <h1>Edit category</h1>
               </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                   <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item active">Thêm thương hiệu</li>
+                  <li class="breadcrumb-item active">Cập nhật danh mục</li>
                 </ol>
 
               </div>
@@ -36,8 +37,8 @@
 
                     <div class="col-md-6 text-right">
                       <button type="submit" class="btn bg-success">
-                        <i class="fa-solid fa-save"></i> Lưu [Thêm] </button>
-                      <a href="{{ route('brand.index') }}" class="btn bg-success">
+                        <i class="fa-solid fa-save"></i> Lưu [Cập nhật] </button>
+                      <a href="{{ route('category.index') }}" class="btn bg-success">
                         <i class="fa-solid fa-arrow-left"></i> Quay về danh sách </a>
 
                     </div>
@@ -49,7 +50,7 @@
                     <div class="col-md-9">
                         <div class="mb-3">
                             <label for="name">Tên danh mục</label>
-                            <input type="text" name="name" value="{{old('name')}}" id="name" class="form-control" placeholder="Nhập tên danh mục">
+                            <input type="text" name="name" value="{{old('name',$category->name)}}" id="name" class="form-control" placeholder="Nhập tên danh mục">
                             @if ($errors->any())
                                 <div class="text-danger">
                                     {{$errors->first('name')}}
@@ -59,7 +60,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="metakey">Từ khóa tìm kiếm</label>
-                            <textarea type="text" name="metakey" id="metakey" class="form-control" placeholder="Từ khóa tìm kiếm">{{old('metakey')}}</textarea>
+                            <textarea  name="metakey" id="metakey" class="form-control" placeholder="Từ khóa tìm kiếm">{{old('metakey',$category->metakey)}}</textarea>
                             @if ($errors->any())
                                 <div class="text-danger">
                                     {{$errors->first('metakey')}}
@@ -70,7 +71,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="metadesc">Mô tả</label>
-                            <textarea type="text" name="metadesc" id="metadesc" class="form-control" placeholder="Mô tả">{{old('metadesc')}}</textarea>
+                            <textarea  name="metadesc" id="metadesc" class="form-control" placeholder="Mô tả">{{old('metadesc',$category->metadesc)}}</textarea>
                             @if ($errors->any())
                                 <div class="text-danger">
                                     {{$errors->first('metadesc')}}
@@ -81,7 +82,13 @@
                         </div>
                     </div>
                     <div class="col-md-3">
-
+                        <div class="mb-3">
+                            <label for="parent_id">Danh mục cha</label>
+                            <select name="parent_id" id="parent_id" class="form-control">
+                                <option value="0">--Cấp cha--</option>
+                                {!! $http_parent_id !!}
+                            </select>
+                        </div>
                         <div class="mb-3">
                             <label for="sort_order">Vị trí sắp xếp</label>
                             <select name="sort_order" id="sort_order" class="form-control">
@@ -98,7 +105,7 @@
                             <label for="status">Trạng thái</label>
                             <select name="status" id="status" class="form-control">
                                 <option value="1">Xuất bản</option>
-                                <option value="0">Chưa xuất bản</option>
+                                <option value="2">Chưa xuất bản</option>
 
 
                             </select>
